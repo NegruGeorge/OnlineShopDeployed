@@ -1,0 +1,172 @@
+ $(function(){
+         $("#searchProd").keyup(function(){
+           var inp = $("#searchProd").val();
+           
+           $.ajax({
+             method:"POST",
+             url:"/librarie1",
+             contentType: "application/json",
+             data: JSON.stringify({name:inp}),
+             success:function(response){
+               var rowProduse = $("#rowProduse");
+               rowProduse.html('');
+              if(response.produse.length===0)
+              {
+                rowProduse.append('<h1 style="color:black">WE dont have this product...</h1>');
+              }else{
+                    response.produse.forEach((prod)=>{
+                //       rowProduse.append(`\
+                //       <div class="col-md-3 col-sm-6 my-col" > <div class="card">\
+                //       <div class="thumbnail">\
+                //           <img  src="${prod.img}" >\
+                //       </div>\
+                //       <h4> ${prod.titlu}</h4>\
+                //       <form action="/cart/products" method="POST">\
+                //       <input hidden value="${prod.id}" name="productId"/>\
+                //           <button >adauga in cos</button>\
+                //       </form>\
+                //   </div>\
+                // </div>\   `);
+
+
+                rowProduse.append(`\
+                <div class=" col-xl-3 col-lg-4 col-md-6  my-col" >\
+                <div class="card">\
+                  <div class="imgBox">\
+                    <img src="${prod.img}">\
+                  </div>\
+                
+                  <div class="details">\
+                    <div class="textContent">\
+                      <h3>${prod.titlu}</h3>\
+                      <div class="price">${prod.pret} lei</div>\
+                    </div>\
+                    <h4>Colors</h4>\
+                      <ul id="ul1">\
+                        <li id="li1"></li>\
+                        <li id="li2"></li>\
+                        <li id="li3"></li>\
+                        <li id="li4"></li>\
+                        <li id="li5"></li>\
+                      </ul>\
+                
+                      <select><option value="1">1 buc.</option>\
+                        <option value="2">2 buc.</option>\
+                        <option value="3">3 buc.</option><option value="4">4 buc.</option>\
+                        <option value="5">5 buc.</option><option value="6">6 buc.</option>\
+                        <option value="7">7 buc.</option><option value="8">8 buc.</option>\
+                        <option value="9">9 buc.</option><option value="10">10 buc.</option>\
+                      </select>\
+                      <form action="/cart/products" method="POST">\
+                        <input hidden value="${prod.id}" name="productId">\
+                        <button id="button_products">Buy it now</button>\
+                       </form>\
+                    
+                  </div>\
+                
+                  <div class="description">\
+                    <div class="icon"><i class="fas fa-into-circle"></i></div>\
+                      <div class="contents">\
+                        <h2>${prod.titlu}</h2>\
+                        <p id="p1">${prod.descriere}</p>\
+                      </div>\
+                  </div>\
+                </div>\
+              </div>\  `)
+
+                    })
+                 
+              }
+              
+             }
+           })
+         })
+       })
+
+
+// toate si pt sanitare si librarie pt ca au acelasi id 
+       $(function(){
+        $("#toate").on('click',function(){
+          $.ajax({
+           method:"POST",
+           url:"/filtru",
+           contentType: "application/json",
+           data: JSON.stringify({name:"toate"}),
+           success:function(response){
+             var rowProduse = $("#rowProduse");
+             rowProduse.html('');
+            if(response.produse.length===0)
+            {
+              rowProduse.append('<h1 style="color:black">WE dont have this product...</h1>');
+            }else{
+                  response.produse.forEach((prod)=>{
+              //       rowProduse.append(`\
+              //       <div class="col-md-3 col-sm-6 my-col" > <div class="card">\
+              //       <div class="thumbnail">\
+              //           <img  src="${prod.img}" >\
+              //       </div>\
+              //       <h4> ${prod.titlu}</h4>\
+              //       <form action="/cart/products" method="POST">\
+              //       <input hidden value="${prod.id}" name="productId"/>\
+              //           <button >adauga in cos</button>\
+              //       </form>\
+              //   </div>\
+              // </div>\   `);
+
+
+              rowProduse.append(`\
+              <div class=" col-xl-3 col-lg-4 col-md-6  my-col" >\
+              <div class="card">\
+                <div class="imgBox">\
+                  <img src="${prod.img}"">\
+                </div>\
+              
+                <div class="details">\
+                  <div class="textContent">\
+                    <h3>${prod.titlu}"</h3>\
+                    <div class="price">${prod.pret} lei</div>\
+                  </div>\
+                  <h4>Colors</h4>\
+                    <ul id="ul1">\
+                      <li id="li1"></li>\
+                      <li id="li2"></li>\
+                      <li id="li3"></li>\
+                      <li id="li4"></li>\
+                      <li id="li5"></li>\
+                    </ul>\
+              
+                    <select><option value="1">1 buc.</option>\
+                      <option value="2">2 buc.</option>\
+                      <option value="3">3 buc.</option><option value="4">4 buc.</option>\
+                      <option value="5">5 buc.</option><option value="6">6 buc.</option>\
+                      <option value="7">7 buc.</option><option value="8">8 buc.</option>\
+                      <option value="9">9 buc.</option><option value="10">10 buc.</option>\
+                    </select>\
+                    <form action="/cart/products" method="POST">\
+                      <input hidden value="${prod.id}" name="productId">\
+                      <button id="button_products">Buy it now</button>\
+                     </form>\
+                  
+                </div>\
+              
+                <div class="description">\
+                  <div class="icon"><i class="fas fa-into-circle"></i></div>\
+                    <div class="contents">\
+                      <h2>${prod.titlu}</h2>\
+                      <p id="p1">${prod.descriere}</p>\
+                    </div>\
+                </div>\
+              </div>\
+            </div>\  `)
+
+                  })
+               
+            }
+
+           }
+           
+          })
+
+        })
+      })
+
