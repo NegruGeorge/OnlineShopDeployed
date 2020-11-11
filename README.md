@@ -15,9 +15,10 @@ Also you have an admin page from which you can control/edit/add/delete products 
 
 What i Learned
 -----
-* How to comunicate with my client 
-* Node.js/javascript/html/css/mysql/Ajax
-* hashing passwords, cookie-sessions, login-logout, user interactions.
+* How to communicate with my client
+* Node.js/ javascript/html/css/mysql/Ajax
+* hashing passwords, cookie-sessions, authentications, user interactions.
 * how to send mails with node.js 
 * ajax and how to use it
-*
+* how to upload files and store them
+*\
