@@ -13,6 +13,8 @@ It's a complete online shop where you can make an order and receive an email wit
 
 Also you have an admin page from which you can control/edit/add/delete products from the store.
 
+If you want to check the admin page DM me for the admin acount... ( I don't put it here because I don't want anyone to add weird products to the site :)) )
+
 What i Learned
 -----
 * How to communicate with my client
